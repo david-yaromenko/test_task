@@ -39,8 +39,10 @@ public class DocumentManager {
                         request.titlePrefixes.isEmpty() ||
                         request.titlePrefixes.stream().anyMatch(document.title::startsWith))
                 .filter(document -> request.containsContents == null ||
+                        request.containsContents.isEmpty() ||
                         request.containsContents.stream().anyMatch(document.content::contains))
                 .filter(document -> request.authorIds == null ||
+                        request.authorIds.isEmpty() ||
                         request.authorIds.stream().anyMatch(document.author.id::contains))
                 .filter(document -> request.createdFrom == null ||
                         document.created.isAfter(request.createdFrom))
